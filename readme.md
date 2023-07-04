@@ -1,31 +1,67 @@
-## GoIT Node.js Course Template Homework
+## GoIT Node.js Course Homework
 
-Виконайте форк цього репозиторію для виконання домашніх завдань (2-6)
-Форк створить репозиторій на вашому http://github.com
+## Getting Started
 
-Додайте ментора до колаборації
+1. **Clone the repository**
 
-Для кожної домашньої роботи створюйте свою гілку.
+2. **Install the dependencies:**
 
-- hw02
-- hw03
-- hw04
-- hw05
-- hw06
+   ```
+   npm install
+   ```
 
-Кожна нова гілка для др повинна робитися з master
+3. **Set up the environment variables:**
 
-Після того, як ви закінчили виконувати домашнє завдання у своїй гілці, необхідно зробити пулл-реквест (PR). Потім додати ментора для рев'ю коду. Тільки після того, як ментор заапрувить PR, ви можете виконати мердж гілки з домашнім завданням у майстер.
+   Create a .env file in the root directory.
+   Add the following variables to the .env file:
 
-Уважно читайте коментарі ментора. Виправте зауваження та зробіть коміт у гілці з домашнім завданням. Зміни підтягнуться у PR автоматично після того, як ви відправите коміт з виправленнями на github
-Після виправлення знову додайте ментора на рев'ю коду.
+   ```
+   DB_HOST = Your mongodb+srv uri
+   SECRET = Your secret string to sign jwt
+   SENDGRID_API_KEY = Your sendgrid API key
+   EMAIL_SENDER = Your verified in sendgrid sender email
+   BASE_URL = 'http://localhost'
+   PORT = '3000'
 
-- При здачі домашньої роботи є посилання на PR
-- JS-код чистий та зрозумілий, для форматування використовується Prettier
+   ```
 
-### Команди:
+4. **Use one of the commands:**
 
-- `npm start` &mdash; старт сервера в режимі production
-- `npm run start:dev` &mdash; старт сервера в режимі розробки (development)
-- `npm run lint` &mdash; запустити виконання перевірки коду з eslint, необхідно виконувати перед кожним PR та виправляти всі помилки лінтера
-- `npm lint:fix` &mdash; та ж перевірка лінтера, але з автоматичними виправленнями простих помилок
+- `npm start` &mdash; start server in production mode
+- `npm run start:dev` &mdash; start server in dev mode (development)
+- `npm run lint` &mdash; checking code with ESlint
+- `npm lint:fix` &mdash; checking code and autofix
+
+The API server will start running on http://localhost:3000.
+
+## API Endpoints
+
+### GET /contacts : Get all contacts.
+
+### GET /contacts?favorite=true&page=1&limit=20 : Get all contacts with favorite filter and pagination.
+
+### GET /contacts/:contactId : Get a contact by ID.
+
+### POST /contacts : Create a new contact.
+
+### PUT /contacts/:contactId : Update a contact by ID.
+
+### PATCH /contacts/:contactId/favorite : Update favorite status by contact ID.
+
+### DELETE /contacts/:contactId : Delete a contact by ID.
+
+### POST /users/signup : Register new user.
+
+### POST /users/login : Login user.
+
+### POST /users/logout : Logout user.
+
+### GET /users/current : Get current user data.
+
+### PATCH /users/ : Change users subscription.
+
+### PATCH /users/avatars : Change users avatar > upload file with _avatar_ key.
+
+### GET /users/verify/:verificationToken : Verify user email by sended verification token
+
+### POST /users/verify : Resend verification email
