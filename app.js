@@ -14,6 +14,8 @@ app.use(express.json());
 
 app.use("/api", contactsRouter);
 
+require("./config/config-passport");
+
 app.use((_, res, __) => {
   res.status(404).json({
     message: "Use api on routes: /api/contacts",
