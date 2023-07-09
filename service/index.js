@@ -1,34 +1,23 @@
 const Contact = require("./schemas/contacts");
 
-const getAllContacts = async (owner, favorite, page, limit) => {
-  const skip = (page - 1) * limit;
-  if (favorite && favorite.toLowerCase() === "true") {
-    console.log("fav");
-     return Contact.find({ owner, favorite: true }).skip(skip).limit(limit);
-  }
-
-  if (favorite && favorite.toLowerCase() === "false") {
-    console.log("fav");
-    return Contact.find({ owner, favorite: false }).skip(skip).limit(limit);
-  }
-
-  return Contact.find({ owner }).skip(skip).limit(limit);
+const getAllContacts = async () => {
+  return Contact.find();
 };
 
-const getContactById = (id, owner) => {
-  return Contact.findOne({ _id: id, owner });
+const getContactById = (id) => {
+  return Contact.findOne({ _id: id });
 };
 
-const createContact = ({ name, email, phone, owner }) => {
-  return Contact.create({ name, email, phone, owner });
+const createContact = ({ name, email, phone }) => {
+  return Contact.create({ name, email, phone });
 };
 
-const updateContact = (id, owner, fields) => {
-  return Contact.findByIdAndUpdate({ _id: id,owner }, fields, { new: true });
+const updateContact = (id, fields) => {
+  return Contact.findByIdAndUpdate({ _id: id }, fields);
 };
 
-const removeContact = (id, owner) => {
-  return Contact.findByIdAndRemove({ _id: id, owner});
+const removeContact = (id) => {
+  return Contact.findByIdAndRemove({ _id: id });
 };
 
 module.exports = {

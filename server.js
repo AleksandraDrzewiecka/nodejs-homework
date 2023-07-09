@@ -9,10 +9,8 @@ const connection = mongoose.connect(uriDb, {
   useUnifiedTopology: true,
 });
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
- console.log("Server running. Use our API on port: 3000");
+app.listen(3001, () => {
+  console.log("Server running. Use our API on port: 3000");
 });
 
 connection
