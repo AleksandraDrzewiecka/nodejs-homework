@@ -1,67 +1,41 @@
-## GoIT Node.js Course Homework
+Welcome to my contacts app!
 
-## Getting Started
+First of all you need to download my files, open in your code programm, install all libs by terminal command npm install.
 
-1. **Clone the repository**
+Now you must create .env with your data to mongoDb: DB_HOST=mongodb+srv://YOUR_LOGIN:YOUR_PASSWORD@cluster0.9yhbgdk.mongodb.net/db-contacts and secret to encrypt passwords: SECRET=YOUR_SECRET_PASSWORD
 
-2. **Install the dependencies:**
+My app default is working on localhost:3000/
 
-   ```
-   npm install
-   ```
+If you are new, firstly register on route: /api/users/signup by using json {"email": "YOUR_EMAIL", "password": "YOUR_PASSWORD"}
 
-3. **Set up the environment variables:**
+If you have used my app and got account, login on route: /api/users/login by using json {"email": "YOUR_EMAIL", "password": "YOUR_PASSWORD"}
 
-   Create a .env file in the root directory.
-   Add the following variables to the .env file:
+Then you will have acces to contacts saved in your mongoDb.
 
-   ```
-   DB_HOST = Your mongodb+srv uri
-   SECRET = Your secret string to sign jwt
-   SENDGRID_API_KEY = Your sendgrid API key
-   EMAIL_SENDER = Your verified in sendgrid sender email
-   BASE_URL = 'http://localhost'
-   PORT = '3000'
+Helpfull links:
 
-   ```
+POST /users/signup - will register user
 
-4. **Use one of the commands:**
+POST /users/login - will login user
 
-- `npm start` &mdash; start server in production mode
-- `npm run start:dev` &mdash; start server in dev mode (development)
-- `npm run lint` &mdash; checking code with ESlint
-- `npm lint:fix` &mdash; checking code and autofix
+GET /users/current - will show current logged in user
 
-The API server will start running on http://localhost:3000.
+POST /users/logout - will logout user (delete token)
 
-## API Endpoints
+PATCH /users/ - will change user subscription
 
-### GET /contacts : Get all contacts.
+PATCH /users/avatars - will change avatar (key: avatar - for example in POSTMAN use Body/form-data key: avatar and upload file)
 
-### GET /contacts?favorite=true&page=1&limit=20 : Get all contacts with favorite filter and pagination.
+GET /contacts - will get all contacts
 
-### GET /contacts/:contactId : Get a contact by ID.
+GET /contacts?favorite=false&page=2&limit=10 - will get all contacts with favorite filter set on true and pagination (favorite = false, page = 2 and limit per page = 10). Default limit is 10 per page.
 
-### POST /contacts : Create a new contact.
+GET /contacts/:contactId - will get contact with contactId
 
-### PUT /contacts/:contactId : Update a contact by ID.
+POST /contacts - will create contact
 
-### PATCH /contacts/:contactId/favorite : Update favorite status by contact ID.
+PUT /contacts/:contactId - will update contact with contactId
 
-### DELETE /contacts/:contactId : Delete a contact by ID.
+PATCH /contacts/:contactId/favorite - will update your favourite status in contact with contactId
 
-### POST /users/signup : Register new user.
-
-### POST /users/login : Login user.
-
-### POST /users/logout : Logout user.
-
-### GET /users/current : Get current user data.
-
-### PATCH /users/ : Change users subscription.
-
-### PATCH /users/avatars : Change users avatar > upload file with _avatar_ key.
-
-### GET /users/verify/:verificationToken : Verify user email by sended verification token
-
-### POST /users/verify : Resend verification email
+DELETE /contacts/:contactId - will remove contact with :contactId
