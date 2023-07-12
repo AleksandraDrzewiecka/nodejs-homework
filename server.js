@@ -28,17 +28,15 @@ const isAccessible = (path) => {
 const createFolderIsNotExist = async (folder) => {
   if (!(await isAccessible(folder))) {
     await fs.mkdir(folder);
+     console.log(`${folder} created`);
   }
 };
 
 connection
   .then(() => {
     console.log(`Database connection successful`);
-<<<<<<< Updated upstream
-        createFolderIsNotExist(tempDir);
-=======
     createFolderIsNotExist(tempDir);
->>>>>>> Stashed changes
+    createFolderIsNotExist(path.join(process.cwd(), "public"));
     createFolderIsNotExist(path.join(process.cwd(), "public", "avatars"));
   })
   .catch((err) => {

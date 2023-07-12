@@ -23,6 +23,14 @@ const userSchema = new Schema({
     default: null,
   },
   avatarURL: String,
+   verify: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+    required: [true, "Verify token is required"],
+  },
 });
 
 userSchema.methods.setSubscription = function (subscription) {
@@ -44,3 +52,4 @@ userSchema.methods.validPassword = function (password) {
 const User = mongoose.model("user", userSchema);
 
 module.exports = User;
+
