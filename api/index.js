@@ -33,8 +33,9 @@ router.patch(
   avatarUploader.single("avatar"),
   ctrlUsers.setAvatar
 );
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
+router.get("/users/verify/:verificationToken", ctrlUsers.verifyUser);
+
+router.post("/users/verify", ctrlUsers.resendVerificationEmail);
+
 module.exports = router;
