@@ -3,6 +3,7 @@ const router = express.Router();
 const ctrlContact = require("../controller/contacts");
 const ctrlUsers = require("../controller/users");
 const auth = require("../middleware/auth");
+const { avatarUploader } = require("../middleware/avatarUploader");
 
 router.get("/contacts",auth, ctrlContact.get);
 
@@ -26,4 +27,14 @@ router.get("/users/current", auth, ctrlUsers.getCurrent);
 
 router.patch("/users/", auth, ctrlUsers.setSubscription);
 
+router.patch(
+  "/users/avatars",
+  auth,
+  avatarUploader.single("avatar"),
+  ctrlUsers.setAvatar
+);
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 module.exports = router;
